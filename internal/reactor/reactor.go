@@ -86,7 +86,11 @@ func (r *BatchReactor) solveFirstOrder() (Result, error) {
 	for i, t := range ts {
 		xs[i] = FirstOrderConversion(r.k, t)
 	}
-	return r.buildResult(ts, xs)
+	res, err := r.buildResult(ts, xs)
+	if err != nil {
+		return Result{}, err
+	}
+	return fillResult(res), nil
 }
 
 // solveSecondOrder integrates dX/dt with RK4. The derivative is built from
