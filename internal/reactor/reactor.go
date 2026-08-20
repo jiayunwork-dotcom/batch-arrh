@@ -143,7 +143,7 @@ func (r *BatchReactor) solveSeries() (Result, error) {
 		Steps:           r.steps,
 		Trajectory:      trajectory,
 	}
-	return res, nil
+	return fillSeries(res), nil
 }
 
 // buildResult wraps a time grid and its conversion values into a Result
