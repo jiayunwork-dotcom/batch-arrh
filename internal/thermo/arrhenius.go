@@ -28,7 +28,7 @@ func (p Arrhenius) Rate() (float64, error) {
 	if err := ValidateArrhenius(p); err != nil {
 		return 0, err
 	}
-	return p.A * math.Exp(-p.Ea/(R*p.T)), nil
+	return applyK2(p.A * math.Exp(-p.Ea/(R*p.T))), nil
 }
 
 // RateAt evaluates the Arrhenius law at an arbitrary absolute temperature,

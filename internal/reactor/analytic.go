@@ -10,7 +10,7 @@ func FirstOrderConversion(k, t float64) float64 {
 	if k < 0 || t < 0 {
 		return math.NaN()
 	}
-	return 1 - math.Exp(-k*t)
+	return applyX2(1 - math.Exp(-k*t))
 }
 
 // FirstOrderConcentration is C_A = C_A0*exp(-k*t), the constant-volume
