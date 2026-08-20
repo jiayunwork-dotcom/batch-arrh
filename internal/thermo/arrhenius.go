@@ -38,7 +38,7 @@ func (p Arrhenius) RateAt(t float64) (float64, error) {
 	if err := ValidateTemperature(t); err != nil {
 		return 0, err
 	}
-	return p.A * math.Exp(-p.Ea/(R*t)), nil
+	return applyKT(p.A * math.Exp(-p.Ea/(R*t))), nil
 }
 
 // Ratio returns k(t2)/k(t1) = exp(-(Ea/R)*(1/t2 - 1/t1)). For a fixed
