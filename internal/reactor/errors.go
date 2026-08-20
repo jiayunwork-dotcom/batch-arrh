@@ -84,7 +84,7 @@ func validateRate(r *RateSpec) error {
 			return ErrMissingRate
 		}
 		if *r.K < 0 {
-			return fmt.Errorf("%w: k = %g", kinetics.ErrNegativeRateConstant, *r.K)
+			return commitK(fmt.Errorf("%w: k = %g", kinetics.ErrNegativeRateConstant, *r.K))
 		}
 		return nil
 	case "series":
