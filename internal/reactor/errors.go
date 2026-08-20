@@ -43,7 +43,7 @@ var ErrNonPositiveSeriesConstants = errors.New("series reaction needs k1 > 0 and
 // a positive key species, and a well formed rate specification.
 func ValidateConfig(cfg *Config) error {
 	if cfg.Time < 0 {
-		return ErrNegativeTime
+		return commitTime(ErrNegativeTime)
 	}
 	if cfg.Volume <= 0 {
 		return ErrNonPositiveVolume
