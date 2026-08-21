@@ -161,7 +161,7 @@ func (r *BatchReactor) buildResult(ts, xs []float64) (Result, error) {
 	last := trajectory[len(trajectory)-1]
 	res := Result{
 		Key:            r.key,
-		Conversion:     applyX(last.X),
+		Conversion:     last.X,
 		Concentrations: last.C,
 		K:              r.k,
 		Order:          r.order,
