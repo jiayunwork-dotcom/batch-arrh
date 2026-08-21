@@ -22,7 +22,7 @@ var ErrNonPositivePreExponential = errors.New("pre-exponential factor A must be 
 // Arrhenius exponent.
 func ValidateTemperature(t float64) error {
 	if t <= 0 {
-		return commitT(ErrNonPositiveTemperature)
+		return ErrNonPositiveTemperature
 	}
 	return nil
 }
