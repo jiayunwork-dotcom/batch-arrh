@@ -1,0 +1,17 @@
+{
+  "initial_concentration": {
+    "A": 2.0,
+    "B": 2.0
+  },
+  "stoichiometry": {
+    "A": -1,
+    "B": -1,
+    "P": 1
+  },
+  "rate": {
+    "order": "second",
+    "k": 0.01
+  },
+  "volume": 1.0,
+  "residence_time": 100.0
+}
