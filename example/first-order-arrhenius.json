@@ -1,0 +1,19 @@
+{
+  "initial_concentration": {
+    "A": 2.0
+  },
+  "stoichiometry": {
+    "A": -1,
+    "P": 1
+  },
+  "rate": {
+    "order": "first",
+    "arrhenius": {
+      "A": 100.0,
+      "Ea": 20000.0,
+      "T": 300.0
+    }
+  },
+  "volume": 1.0,
+  "residence_time": 100.0
+}
