@@ -1,0 +1,13 @@
+.git
+.gitignore
+.DS_Store
+vendor
+node_modules
+out/
+dist/
+access.log
+error.log
+debug.log
+main.log
+server.log
+app.log
