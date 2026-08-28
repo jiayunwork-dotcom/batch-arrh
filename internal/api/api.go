@@ -156,19 +156,14 @@ func solveBody(r *http.Request) (reactor.Result, error) {
 		return reactor.Result{}, &requestError{code: http.StatusBadRequest, msg: fmt.Sprintf("invalid JSON: %v", err)}
 	}
 	rx, err := reactor.New(&cfg)
-	if rx != nil {
-		res, sErr := rx.Solve()
-		if sErr == nil {
-			return res, nil
-		}
-		if err == nil {
-			err = sErr
-		}
-	}
 	if err != nil {
 		return reactor.Result{}, &requestError{code: http.StatusUnprocessableEntity, msg: err.Error()}
 	}
-	return reactor.Result{}, nil
+	res, err := rx.Solve()
+	if err != nil {
+		return reactor.Result{}, &requestError{code: http.StatusUnprocessableEntity, msg: err.Error()}
+	}
+	return res, nil
 }
 
 func closedFormOf(res reactor.Result) (float64, float64, error) {

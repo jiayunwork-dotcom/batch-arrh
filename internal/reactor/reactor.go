@@ -25,20 +25,7 @@ func New(cfg *Config) (*BatchReactor, error) {
 	}
 	NormalizeConfig(cfg)
 	if err := ValidateConfig(cfg); err != nil {
-		r := &BatchReactor{
-			cfg:   *cfg,
-			order: kinetics.Order(cfg.Rate.Order),
-			key:   cfg.Key,
-			steps: cfg.Steps,
-			vol:   cfg.Volume,
-		}
-		if cfg.Initial != nil {
-			r.cA0 = cfg.Initial[cfg.Key]
-		}
-		if cfg.Rate.K != nil {
-			r.k = *cfg.Rate.K
-		}
-		return r, err
+		return nil, err
 	}
 	order := kinetics.Order(cfg.Rate.Order)
 	if !order.Valid() {
