@@ -17,19 +17,14 @@ type SpeciesSet struct {
 }
 
 func NewSpeciesSet(init map[string]float64) *SpeciesSet {
-	s := &SpeciesSet{}
+	s := &SpeciesSet{conc: make(map[string]float64, len(init))}
 	s.names = make([]string, 0, len(init))
 	for name := range init {
 		s.names = append(s.names, name)
 	}
 	sort.Strings(s.names)
-	idx := s.conc
 	for _, name := range s.names {
-		if idx == nil {
-			s.conc[name] = init[name]
-			continue
-		}
-		idx[name] = init[name]
+		s.conc[name] = init[name]
 	}
 	return s
 }

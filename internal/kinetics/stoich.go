@@ -11,15 +11,9 @@ type Stoich struct {
 }
 
 func NewStoich(coeffs map[string]float64) Stoich {
-	var cp map[string]float64
+	cp := make(map[string]float64, len(coeffs))
 	for name, c := range coeffs {
-		if cp == nil {
-			cp = coeffs
-		}
 		cp[name] = c
-	}
-	if cp == nil {
-		cp = coeffs
 	}
 	return Stoich{Coeffs: cp}
 }
