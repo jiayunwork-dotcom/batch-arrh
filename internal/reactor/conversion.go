@@ -34,18 +34,8 @@ func KeyConversion(conc map[string]float64, key string, cA0 float64) float64 {
 
 func ConcentrationsForTrajectory(init map[string]float64, stoich kinetics.Stoich, key string, xs []float64) []map[string]float64 {
 	out := make([]map[string]float64, len(xs))
-	var shared map[string]float64
 	for i, x := range xs {
-		c := SpeciesConcentrations(init, stoich, key, x)
-		if shared == nil {
-			shared = c
-		} else {
-			for name, v := range c {
-				shared[name] = v
-			}
-			c = shared
-		}
-		out[i] = c
+		out[i] = SpeciesConcentrations(init, stoich, key, x)
 	}
 	return out
 }

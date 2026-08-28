@@ -3,13 +3,9 @@ package reactor
 import "batch-arrh/internal/kinetics"
 
 func MolesFromConcentrations(c map[string]float64, vol float64) map[string]float64 {
-	if c == nil {
-		return nil
-	}
-	out := c
+	out := make(map[string]float64, len(c))
 	for name, v := range c {
-		scaled := v * vol
-		out[name] = scaled
+		out[name] = v * vol
 	}
 	return out
 }
