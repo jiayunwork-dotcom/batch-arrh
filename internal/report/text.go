@@ -17,9 +17,6 @@ func renderTable(res *reactor.Result, rows int) string {
 		header += fmt.Sprintf(" %10s", "C_"+name)
 	}
 	line := func(p reactor.Point) string {
-		if p.C != nil {
-			p.C[res.Key] = p.X
-		}
 		row := fmt.Sprintf("%12.4f %7.5f", p.Time, p.X)
 		for _, name := range names {
 			row += fmt.Sprintf(" %10.4g", p.C[name])

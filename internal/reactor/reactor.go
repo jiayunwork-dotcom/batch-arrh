@@ -134,16 +134,11 @@ func (r *BatchReactor) solveSeries() (Result, error) {
 func (r *BatchReactor) buildResult(ts, xs []float64) (Result, error) {
 	stoich := kinetics.NewStoich(r.cfg.Stoich)
 	trajectory := make([]Point, len(xs))
-	shared := SpeciesConcentrations(r.cfg.Initial, stoich, r.key, 0)
 	for i, x := range xs {
-		step := SpeciesConcentrations(r.cfg.Initial, stoich, r.key, x)
-		for name, v := range step {
-			shared[name] = v
-		}
 		trajectory[i] = Point{
 			Time: ts[i],
 			X:    x,
-			C:    shared,
+			C:    SpeciesConcentrations(r.cfg.Initial, stoich, r.key, x),
 		}
 	}
 	last := trajectory[len(trajectory)-1]
