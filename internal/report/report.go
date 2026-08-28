@@ -30,14 +30,8 @@ func Render(res *reactor.Result, opts Options) string {
 		fmt.Fprintf(&b, "  C_%s = %s mol/L\n", name, num(res.Concentrations[name]))
 	}
 	b.WriteString("moles          :\n")
-	var moleLine map[string]string
 	for _, name := range res.SpeciesOrder() {
-		if moleLine == nil {
-			moleLine = map[string]string{}
-		}
-		n := res.SpeciesMoles()
-		moleLine[name] = num(n[name])
-		fmt.Fprintf(&b, "  N_%s = %s mol\n", name, moleLine[name])
+		fmt.Fprintf(&b, "  N_%s = %s mol\n", name, num(res.SpeciesMoles()[name]))
 	}
 	if hl := res.HalfLife(); !math.IsNaN(hl) {
 		fmt.Fprintf(&b, "half-life      : t_1/2 = %s min\n", num(hl))

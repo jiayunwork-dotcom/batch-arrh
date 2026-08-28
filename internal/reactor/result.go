@@ -76,12 +76,8 @@ func (res *Result) NKeyAtStart() float64 {
 }
 
 func (res *Result) SpeciesMoles() map[string]float64 {
-	var out map[string]float64
+	out := make(map[string]float64, len(res.Concentrations))
 	for name, c := range res.Concentrations {
-		if out == nil {
-			out[name] = c * res.Volume
-			continue
-		}
 		out[name] = c * res.Volume
 	}
 	return out
